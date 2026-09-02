@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from "next/link";
 import { Search, Bell, Sparkles, Upload, ArrowRight } from 'lucide-react';
 
 export default function Herosection() {
@@ -10,13 +11,23 @@ export default function Herosection() {
       {/* BACKGROUND IMAGE - covers entire hero including below the text */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/Dash_Heosection.png" // put hero-bg.png in your /public folder
+          src="/Dash_Heosection_2.png" // put hero-bg.png in your /public folder
           alt="Career Journey Background"
           fill
           priority
           className="object-cover object-right object-bottom md:object-center"
           sizes="100vw"
         />
+          {/* Mobile Image */}
+  <Image
+    src="/dash_hero_mobile.png"
+    alt="Career Journey Background"
+    fill
+    priority
+    className="block object-cover object-center md:hidden"
+    sizes="100vw"
+  />
+
         {/* Soft fade on the left so text stays readable */}
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent w-full md:w-[70%]" />
         {/* Soft fade at the bottom edge */}
@@ -81,17 +92,20 @@ export default function Herosection() {
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-            <button className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#186A3B] px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[#145a32] sm:w-auto sm:text-base">
-              <Upload className="h-5 w-5 transition-transform group-hover:-translate-y-0.5" />
-              Upload Resume
-            </button>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+  <Link
+    href="/Resume"
+    className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#186A3B] px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[#145a32] sm:w-auto sm:text-base"
+  >
+    <Upload className="h-5 w-5 transition-transform group-hover:-translate-y-0.5" />
+    Upload Resume
+  </Link>
 
-            <button className="group flex w-full items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white/90 px-7 py-3.5 text-sm font-semibold text-slate-900 shadow-sm backdrop-blur-sm transition-all hover:bg-white sm:w-auto sm:text-base">
-              Explore Jobs
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </button>
-          </div>
+  <button className="group flex w-full items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white/90 px-7 py-3.5 text-sm font-semibold text-slate-900 shadow-sm backdrop-blur-sm transition-all hover:bg-white sm:w-auto sm:text-base">
+    Explore Jobs
+    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+  </button>
+</div>
         </main>
       </div>
     </div>
