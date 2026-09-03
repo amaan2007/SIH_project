@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { 
   Home, 
   User, 
@@ -19,21 +20,23 @@ import {
 } from 'lucide-react';
 
 export default function Sidebar({ isOpen, onClose }) {
- const navItems = [
-  { name: 'Home', icon: Home, href: '/', active: false },
-  { name: 'My Profile', icon: User, href: '#' },
-  { name: 'Resume', icon: FileText, href: '/Resume', active: false },
-  { name: 'Job Matches', icon: Briefcase, href: '#' },
-  { name: 'Skill Gap', icon: BarChart2, href: '#' },
-  { name: 'Roadmap', icon: Map, href: '#' },
-  { name: 'Applications', icon: Send, href: '#' },
-  { name: 'Saved Jobs', icon: Heart, href: '#' },
-  { name: 'Settings', icon: Settings, href: '#' },
-];
+  const pathname = usePathname();
+
+  const navItems = [
+    { name: 'Home', icon: Home, href: '/' },
+    { name: 'My Profile', icon: User, href: '/Profile' },
+    { name: 'Resume', icon: FileText, href: '/Resume' },
+    { name: 'Job Matches', icon: Briefcase, href: '/JobMatches' },
+    { name: 'Skill Gap', icon: BarChart2, href: '/SkillGap' },
+    { name: 'Roadmap', icon: Map, href: '/CareerRoadmap' },
+    { name: 'Applications', icon: Send, href: '#' },
+    { name: 'Saved Jobs', icon: Heart, href: '#' },
+    { name: 'Settings', icon: Settings, href: '#' },
+  ];
 
   return (
     <>
-      {/* MOBILE OVERLAY - tap outside to close */}
+      {/* MOBILE OVERLAY */}
       <div
         className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
           isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
@@ -54,7 +57,6 @@ export default function Sidebar({ isOpen, onClose }) {
       >
         {/* TOP SECTION */}
         <div>
-          {/* Logo row + Close button (mobile only) */}
           <div className="mb-8 flex items-center justify-between px-2">
             <div className="flex items-center gap-3">
               <div className="relative flex h-8 w-8 items-center justify-center text-[#186A3B]">
@@ -67,32 +69,32 @@ export default function Sidebar({ isOpen, onClose }) {
               </div>
             </div>
 
-            {/* Close button - mobile only */}
             <button
               onClick={onClose}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 shadow-sm transition-colors hover:bg-gray-50 hover:text-gray-800 lg:hidden"
-              aria-label="Close menu"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 shadow-sm transition-colors hover:bg-gray-50 lg:hidden"
             >
               <X className="h-5 w-5" />
             </button>
           </div>
 
-          {/* Navigation */}
+          {/* Navigation Links */}
           <nav className="flex flex-col gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
+              const isActive = pathname === item.href;
+
               return (
                 <Link
                   key={item.name}
                   href={item.href}
                   onClick={onClose}
                   className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors ${
-                    item.active
+                    isActive
                       ? 'bg-[#E8F3EE] text-[#186A3B]'
                       : 'text-gray-600 hover:bg-gray-100 hover:text-slate-900'
                   }`}
                 >
-                  <Icon className={`h-5 w-5 ${item.active ? 'text-[#186A3B]' : 'text-gray-400'}`} />
+                  <Icon className={`h-5 w-5 ${isActive ? 'text-[#186A3B]' : 'text-gray-400'}`} />
                   {item.name}
                 </Link>
               );
@@ -149,7 +151,7 @@ export default function Sidebar({ isOpen, onClose }) {
                 />
               </div>
               <div className="text-left">
-                <p className="text-sm font-semibold text-slate-900">Amaan Husain</p>
+                <p className="text-sm font-semibold text-slate-900">XYZ</p>
                 <p className="text-xs text-[#186A3B]">View Profile</p>
               </div>
             </div>
