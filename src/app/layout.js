@@ -5,8 +5,11 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Career Dashboard",
-  description: "AI-Powered Career Intelligence",
+   title: 'Praxi — Learn. Build. Apply',
+  description: 'Praxi',
+  icons: {
+    icon: '/praxi-icon.png',
+  },
 };
 
 export default function RootLayout({ children }) {
