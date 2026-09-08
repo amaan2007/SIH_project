@@ -5,9 +5,9 @@ import { Search, Bell } from 'lucide-react';
 
 export default function ResumeHeader() {
   return (
-    <header className="flex w-full items-center justify-between gap-4">
-      {/* Search */}
-      <div className="relative hidden w-full max-w-md sm:block lg:max-w-lg">
+    <>
+     {/* Search */}
+    <div className="relative hidden w-full max-w-md sm:block lg:max-w-lg">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
           <Search className="h-5 w-5 text-gray-400" />
         </div>
@@ -18,6 +18,8 @@ export default function ResumeHeader() {
         />
       </div>
 
+    <header className="flex w-full items-center justify-between gap-4">
+      
       <div className="ml-auto flex items-center gap-3 sm:gap-4">
         <button className="relative rounded-full border border-gray-200 bg-white p-2.5 text-gray-600 shadow-sm hover:bg-gray-50">
           <Bell className="h-5 w-5" />
@@ -35,5 +37,6 @@ export default function ResumeHeader() {
         </div>
       </div>
     </header>
+  </>
   );
 }

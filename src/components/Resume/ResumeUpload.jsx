@@ -26,13 +26,16 @@ export default function ResumeUpload({ onUpload }) {
   };
 
   return (
+    <>
+     
     <div>
       {/* Title Row */}
       <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">Resume</h1>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-gray-500 underline-offset-8">
             Upload your resume to get AI-powered insights and boost your career
+            
           </p>
         </div>
 
@@ -67,7 +70,9 @@ export default function ResumeUpload({ onUpload }) {
         <h3 className="mt-5 text-lg font-bold text-slate-900 sm:text-xl">
           Upload your resume to get started
         </h3>
-        <p className="mt-2 text-sm text-gray-500">Drag & drop your resume here or</p>
+        <p className="mt-2 text-sm text-gray-500">Drag & drop your resume here 
+        (Mandatory:mention your job role)  
+        </p>
 
         <button
           onClick={(e) => {
@@ -154,5 +159,6 @@ export default function ResumeUpload({ onUpload }) {
         <Lock className="h-5 w-5 shrink-0 text-gray-400" />
       </div>
     </div>
+  </>
   );
 }
